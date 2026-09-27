@@ -7804,7 +7804,7 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h1 id="Capstone-%E2%80%94-mirrors-your-deployed-research-paper">Capstone — mirrors your deployed research paper<a class="anchor-link" href="#Capstone-%E2%80%94-mirrors-your-deployed-research-paper">¶</a></h1><p><a href="https://colab.research.google.com/github/cjalanano-dev/flyrank-ml-internship/blob/main/work/notebooks/capstone.ipynb?flush_cache=true"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg"/></a></p>
 <p><strong>Title: Identifying Content Decay: A Machine Learning Approach to Prioritizing Content Refreshes</strong></p>
-<p><strong>Abstract:</strong> We set out to prioritize content refreshing by identifying which pages show signals of traffic decline, reducing reliance on simple rule-based heuristics. Using the FlyRank ML Internship dataset spanning trailing-90-day performance metrics, we trained a Random Forest model under a strict grouped-client split to avoid leakage. The model successfully ranks pages at a Precision@100 of 53%, outperforming strict baseline rules in the top ranked spots. These results provide decision-support for content teams to efficiently identify and prioritize high-value pages in need of optimization.</p>
+<p><strong>Abstract:</strong> At FlyRank, content teams prioritize decaying pages for updates using hand-written product flags (e.g., age or CTR thresholds). We set out to close the gap where these strict rules fail by learning directly from historical search console metrics. Using the FlyRank ML Internship dataset spanning trailing-90-day performance data, we trained a Random Forest model under a strict grouped-client split to prevent leakage. The model successfully ranks pages at a Precision@100 of 53%, outperforming strict baseline rules in the top spots. These results provide vital decision-support, moving FlyRank beyond hardcoded heuristics to efficiently prioritize high-value pages in need of optimization.</p>
 </div>
 </div>
 </div>
@@ -7815,8 +7815,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-Question">1. Question<a class="anchor-link" href="#1.-Question">¶</a></h2><p><strong>The Problem:</strong> Content decay is silent. While teams create new pages, existing valuable pages slowly lose rankings and traffic. Our question is: <em>Out of thousands of pages across diverse client sites, which pages should a human review and refresh first?</em>
-<strong>Decision Support:</strong> This model outputs a ranked queue to prioritize human attention. It does not automate the content changes, but rather tells the strategist where to spend their limited time.</p>
+<h2 id="1.-Question">1. Question<a class="anchor-link" href="#1.-Question">¶</a></h2><p><strong>The Problem:</strong> Content decay is silent. While FlyRank builds and manages content infrastructure, existing valuable pages slowly lose rankings and traffic. Currently, human teams rely on static, hand-written rules (if-this-then-that thresholds) to decide what to fix. But rules run out when signals get tangled across 79 million daily search events. Our question is: <em>Can a learned model beat the fixed rules at prioritizing which pages a human should review and refresh first?</em>
+<strong>Decision Support:</strong> This model outputs a ranked queue to prioritize human attention. It does not automate the content changes, but rather tells the strategist exactly where to spend their limited time to maximize ROI.</p>
 </div>
 </div>
 </div>
@@ -8132,6 +8132,27 @@ a.anchor-link {
 <li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" type="checkbox"/>My claims use careful words: observed, measured, directional, decision-support</li>
 <li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" type="checkbox"/>Committed to my repo under <code>work/notebooks/</code> — then submit your repo URL on the card. Done.</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=320775c8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="8.-Showcase-Presentation-&amp;-Shareable-Cuts">8. Showcase Presentation &amp; Shareable Cuts<a class="anchor-link" href="#8.-Showcase-Presentation-&amp;-Shareable-Cuts">¶</a></h2><h3 id="5-Minute-Demo-Outline">5-Minute Demo Outline<a class="anchor-link" href="#5-Minute-Demo-Outline">¶</a></h3><ul>
+<li><strong>Question (1 min):</strong> FlyRank manages content at scale, but content decays silently. Currently, we use static, hand-written rules to guess what needs fixing. Can we beat the rule using historical search signals?</li>
+<li><strong>Method (1 min):</strong> I trained a Random Forest on 90-day trailing metrics. Crucially, I used a <code>GroupShuffleSplit</code> by client to ensure the model couldn't cheat by memorizing client traits (leakage).</li>
+<li><strong>One Chart (1 min):</strong> Show the <em>Precision@100 Comparison</em> chart, proving the ML model outperforms the static baseline by effectively picking up complex interactions rules miss.</li>
+<li><strong>One Honest Result (1 min):</strong> The model achieved a Precision@100 of 53% strictly out-of-sample. It isn't a crystal ball, but it's a stronger decision-support tool for our queue.</li>
+<li><strong>One Recommendation (1 min):</strong> We should deploy this as a prioritization queue for human reviewers, starting with the "Deep Refresh (Stale &amp; High Value)" playbook action.</li>
+</ul>
+<h3 id="Shareable-Cuts">Shareable Cuts<a class="anchor-link" href="#Shareable-Cuts">¶</a></h3><p><strong>Employer-Facing Summary (3 Sentences):</strong>
+I built an ML-driven content prioritization engine to replace static, rule-based heuristics for identifying SEO decay. Trained on a 30,000-row, pseudonymized sample of FlyRank’s 79M-row production search dataset, the Random Forest model utilized trailing-90-day analytics while aggressively filtering for temporal and grouped-client leakage. The model successfully outperformed baseline rules out-of-sample, providing actionable, ranked decision-support queues for content strategists.</p>
+<p><strong>Social Post (Methodology-focused):</strong>
+Just wrapped my capstone building a content-decay ranking model on FlyRank's 79M-row search dataset! The biggest lesson? Validation honesty beats algorithm complexity. By implementing a strict GroupShuffleSplit on client boundaries and hunting down temporal label leakage, I ensured our 53% Precision@100 score was real, out-of-sample performance, not just the model memorizing client idiosyncrasies. Real-world ML is all about the methodology! 🚀📉</p>
 </div>
 </div>
 </div>
