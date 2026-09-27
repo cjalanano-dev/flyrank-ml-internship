@@ -1,0 +1,11 @@
+{
+  "assignment": "ML-07",
+  "lane": "Refresh / Content Opportunity Scoring",
+  "rule": "stale_and_low_ctr",
+  "base_rate": 0.5421,
+  "precision_at_10": 0.7,
+  "precision_at_50": 0.52,
+  "precision_at_100": 0.53,
+  "n_refresh_priority": 7234,
+  "n_total": 30000
+}
